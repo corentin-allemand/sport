@@ -166,7 +166,7 @@ export function syncProgressUi(root) {
   const complete = total > 0 && done === total;
   card.querySelector('.prog-done').textContent = String(done);
   card.querySelector('.prog-total').textContent = String(total);
-  card.querySelector('.prog-fill').style.width = `${total ? Math.round((done / total) * 100) : 0}%`;
+  card.querySelector('.prog-fill').style.transform = `scaleX(${total ? done / total : 0})`;
   card.querySelector('.prog-state').textContent = complete ? 'Tout est fait' : done ? `${total - done} restante${total - done > 1 ? 's' : ''}` : 'Coche au fil de l\'eau';
   card.classList.toggle('is-complete', complete);
   card.querySelector('.prog-reset').hidden = done === 0;

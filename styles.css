@@ -1056,7 +1056,7 @@ button.row-link { width: 100%; text-align: left; border: 1px solid var(--line); 
 .prog-count strong { color: var(--text); font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
 .prog-state { font-size: 13px; color: var(--faint); }
 .prog-bar { height: 4px; border-radius: 2px; background: rgba(255, 255, 255, 0.08); overflow: hidden; }
-.prog-fill { display: block; height: 100%; width: 0; border-radius: 2px; background: var(--accent); box-shadow: 0 0 12px rgba(198, 255, 61, 0.6); transition: width 0.35s var(--ease); }
+.prog-fill { display: block; height: 100%; width: 100%; transform: scaleX(0); transform-origin: left center; background: var(--accent); box-shadow: 0 0 12px rgba(198, 255, 61, 0.6); transition: transform 0.35s var(--ease); }
 .prog-foot { display: flex; align-items: center; justify-content: space-between; gap: var(--s3); min-height: 28px; }
 .prog-rest { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--faint); }
 .prog-rest .ico { width: 14px; height: 14px; }
