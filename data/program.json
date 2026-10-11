@@ -1,5 +1,5 @@
 {
-  "programVersion": 1,
+  "programVersion": 2,
   "meta": {
     "version": 1
   },
@@ -101,7 +101,13 @@
       5,
       9,
       13
-    ]
+    ],
+    "restDefaults": {
+      "p1": 75,
+      "p2": 120,
+      "p3": 90,
+      "p4": 75
+    }
   },
   "exercises": [
     {

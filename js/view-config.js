@@ -126,8 +126,10 @@ function textInput(path, value, attrs = '') {
 
 // Sections
 
-function sectionProgramme(d) {
+function sectionProgramme(d, ctx) {
   const p = d.program || {};
+  const phases = p.phases || [];
+  const autoRest = L.autoRestOn(ctx.db);
   const gyms = (d.sessions || []).filter((s) => s.kind !== 'home');
   const start = p.startDate && /^\d{4}-\d{2}-\d{2}$/.test(p.startDate) ? p.startDate : null;
   return `
@@ -153,6 +155,22 @@ function sectionProgramme(d) {
             </span>
           </label>`).join('')}
       </div>
+    </section>
+    <section class="card glass form-card">
+      <div class="card-head"><h3>Minuteur de repos</h3></div>
+      <label class="switch-row">
+        <span class="switch-text"><strong>Lancer le repos en cochant une série</strong><span class="fhint">Réglage enregistré tout de suite, sur ce téléphone.</span></span>
+        <input type="checkbox" class="switch" id="auto-rest" role="switch" ${autoRest ? 'checked' : ''}>
+      </label>
+      <div class="rest-grid">
+        ${PHASES.map((ph, k) => {
+          const name = phases.find((x) => x.id === ph)?.name || ph.toUpperCase();
+          const v = p.restDefaults?.[ph];
+          return field(`<span class="rx-ph">${k + 1}</span>${esc(name)}`,
+            `<span class="num-suffix"><input class="finput" type="number" inputmode="numeric" min="5" max="900" step="5" data-bind="program.restDefaults.${ph}" data-type="int" value="${esc(v ?? '')}" placeholder="${L.REST_FALLBACK[ph]}" aria-label="Repos phase ${k + 1}, en secondes"><span>s</span></span>`);
+        }).join('')}
+      </div>
+      <p class="fhint">Durée du repos lancé à chaque série cochée, selon la phase de la semaine.</p>
     </section>`;
 }
 
@@ -510,7 +528,7 @@ export function viewConfig(ctx) {
   const dirty = configDirty();
   const sec = SECTIONS.some((s) => s.id === cfg.section) ? cfg.section : 'programme';
 
-  const body = sec === 'programme' ? sectionProgramme(d)
+  const body = sec === 'programme' ? sectionProgramme(d, ctx)
     : sec === 'seances' ? sectionSessions(d)
       : sec === 'exercices' ? sectionExercises(d)
         : sec === 'groupes' ? sectionGroups(d)
@@ -560,6 +578,15 @@ export function viewConfig(ctx) {
       }
 
       const onInput = (e) => {
+        if (e.target.id === 'auto-rest') {
+          if (e.type !== 'change') return;
+          const on = e.target.checked;
+          ctx.db.preferences = { ...(ctx.db.preferences || {}), autoRest: on };
+          store.saveAutoRest(on)
+            .then(() => toast(on ? 'Repos lancé en cochant une série' : 'Repos automatique désactivé'))
+            .catch(() => { e.target.checked = !on; toast('Réglage non enregistré, réessaie', 'error'); ctx.reload(); });
+          return;
+        }
         const el = e.target.closest('[data-bind]');
         if (!el) return;
         let v = el.value;

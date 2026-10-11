@@ -5,7 +5,8 @@ import * as L from './js/logic.js';
 import { esc, icon, thumb, toast, openSheet, closeSheet } from './js/ui.js';
 import { viewToday } from './js/view-today.js';
 import { viewSessions } from './js/view-sessions.js';
-import { viewSession, resolveVariant } from './js/view-session.js';
+import { viewSession, resolveVariant, syncProgressUi } from './js/view-session.js';
+import { initTimer, startRest, setPillRoute, setSuggestedRest } from './js/timer.js';
 import { viewExercise } from './js/view-exercise.js';
 import { viewProgress, formatValue, unitLabel } from './js/view-progress.js';
 import { viewLibrary } from './js/view-library.js';
@@ -117,6 +118,65 @@ function saveSwap(sessionId, exerciseId, replacementId) {
   );
 }
 
+// Séries cochées (V4) : mise à jour immédiate de l'écran, écriture en arrière-plan.
+function toggleSet(el) {
+  const { pkey, pos } = el.dataset;
+  const i = Number(el.dataset.i);
+  const group = el.closest('.sets');
+  if (!group || !pkey || !pos) return;
+  const btns = [...group.querySelectorAll('.set')];
+  const marks = btns.map((b) => b.classList.contains('is-on'));
+  marks[i] = !marks[i];
+  const on = marks[i];
+  el.classList.toggle('is-on', on);
+  el.setAttribute('aria-pressed', String(on));
+  el.classList.remove('is-pop');
+  if (on) { void el.offsetWidth; el.classList.add('is-pop'); }
+
+  const progress = (state.db.progress ||= {});
+  const entry = (progress[pkey] ||= {});
+  if (marks.some(Boolean)) entry[pos] = marks;
+  else delete entry[pos];
+  if (!Object.keys(entry).length) delete progress[pkey];
+  syncProgressUi(view);
+
+  store.saveProgress(pkey, pos, marks).catch(() => {
+    toast('Case non enregistrée, réessaie', 'error');
+    resync();
+  });
+
+  if (on && L.autoRestOn(state.db)) {
+    const week = Number(pkey.split('/')[0]);
+    const phaseId = L.phaseOf(state.db, week)?.id || 'p1';
+    startRest(L.restFor(state.db, phaseId), el.dataset.label || 'Repos');
+  }
+}
+
+function openResetSetsSheet(pkey) {
+  openSheet({
+    title: 'Réinitialiser les cases ?',
+    subtitle: 'Toutes les séries cochées de cette séance',
+    body: `
+      <p class="muted">Les cases de cette séance (cette semaine, ce lieu) repartent à zéro. Le journal n'est pas modifié.</p>
+      <button type="button" class="btn btn-danger btn-block btn-lg" id="rs-go">${icon('undo')}Réinitialiser</button>
+      <button type="button" class="btn btn-ghost btn-block" data-sheet-close>Annuler</button>`,
+    onMount(sheet) {
+      sheet.querySelector('#rs-go').addEventListener('click', async () => {
+        closeSheet();
+        if (state.db.progress) delete state.db.progress[pkey];
+        render(false);
+        try {
+          await store.resetProgress(pkey);
+          toast('Cases réinitialisées');
+        } catch {
+          toast('Réinitialisation impossible, réessaie', 'error');
+          resync();
+        }
+      });
+    },
+  });
+}
+
 async function setDb(db) {
   if (db && db.program) {
     state.db = db;
@@ -197,6 +257,9 @@ function render(fresh = true) {
       out = { html: errorScreen() };
     }
   }
+
+  setPillRoute(route.view === viewSession && !!state.db);
+  if (out.restSeconds) setSuggestedRest(out.restSeconds);
 
   const y = window.scrollY;
   view.innerHTML = out.html;
@@ -392,6 +455,10 @@ document.addEventListener('click', (e) => {
     const fb = el.dataset.fallback;
     if (isConfigPath(state.lastPath) && configDirty()) openLeaveGuard(ctx(), () => goBack(fb));
     else goBack(fb);
+  } else if (a === 'set') {
+    toggleSet(el);
+  } else if (a === 'reset-sets') {
+    openResetSetsSheet(el.dataset.pkey);
   } else if (a === 'swap') {
     openSwapSheet(el.dataset.session, el.dataset.ex);
   } else if (a === 'variant') {
@@ -428,6 +495,7 @@ window.addEventListener('unhandledrejection', (e) => {
   toast('Une erreur est survenue');
 });
 
+initTimer();
 render(true);
 load().then(() => {
   render(true);

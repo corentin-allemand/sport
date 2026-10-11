@@ -1,6 +1,7 @@
 // Store local : toute la db vit sur l'appareil (IndexedDB, repli localStorage).
 // Même interface que l'ancienne API serveur (db, saveLog, deleteLog, saveTest,
 // deleteTest, saveSwap, saveConfig), mêmes règles métier.
+// V4 : progress (cases cochées en séance) et preferences.autoRest, données utilisateur.
 // Graine : data/program.json (programme de base), data/media.json (contenu de l'app, jamais stocké).
 
 const DB_NAME = 'sport';
@@ -10,7 +11,7 @@ const SEED_URL = 'data/program.json';
 const MEDIA_URL = 'data/media.json';
 const HISTORY_KEEP = 10;
 const CONFIG_KEYS = ['program', 'exercises', 'sessions', 'tests', 'glossary', 'muscleGroups'];
-const JOURNAL_KEYS = ['logs', 'testResults', 'preferences'];
+const JOURNAL_KEYS = ['logs', 'testResults', 'preferences', 'progress'];
 const TZ = 'Europe/Paris';
 
 // ---------- erreurs (forme compatible avec l'ancienne API : status + data) ----------
@@ -150,6 +151,7 @@ function freshDb(seed) {
     logs: [],
     testResults: [],
     preferences: { swaps: {} },
+    progress: {},
   };
 }
 
@@ -214,6 +216,16 @@ function addMissing(list, seedList, key) {
   return added;
 }
 
+// Repos par défaut (V4) : clés de phase absentes localement copiées depuis la graine.
+function mergeRestDefaults(db, seed) {
+  const from = seed?.program?.restDefaults;
+  if (!isPlainObject(from) || !isPlainObject(db.program)) return;
+  if (!isPlainObject(db.program.restDefaults)) db.program.restDefaults = {};
+  for (const [k, v] of Object.entries(from)) {
+    if (!(k in db.program.restDefaults)) db.program.restDefaults[k] = v;
+  }
+}
+
 async function checkProgramUpdate() {
   let seed;
   try {
@@ -231,6 +243,7 @@ async function checkProgramUpdate() {
     addMissing(db.exercises, seed.exercises, 'id');
     addMissing(db.tests, seed.tests, 'id');
     addMissing(db.glossary, seed.glossary, 'term');
+    mergeRestDefaults(db, seed);
     notice = 'Programme mis à jour, tes modifications sont conservées';
   }
   db.programVersion = seedVersion;
@@ -390,6 +403,17 @@ export function validateConfig(body) {
   if (!Number.isInteger(program.weeks) || program.weeks < 1) {
     errors.push('Programme : « weeks » doit être un entier supérieur ou égal à 1');
   }
+  if (program.restDefaults !== undefined) {
+    if (!isPlainObject(program.restDefaults)) {
+      errors.push('Programme : « restDefaults » doit être un objet');
+    } else {
+      for (const [ph, sec] of Object.entries(program.restDefaults)) {
+        if (!Number.isInteger(sec) || sec < 5 || sec > 900) {
+          errors.push(`Programme : repos invalide pour la phase « ${ph} » (entier de 5 à 900 secondes attendu)`);
+        }
+      }
+    }
+  }
   if (!isPlainObject(program.schedule)) {
     errors.push('Programme : « schedule » doit être un objet');
   } else {
@@ -435,6 +459,29 @@ async function pushHistory(db, reason) {
   await kvSet('history', history.slice(-HISTORY_KEEP));
 }
 
+// ---------- progression en séance (V4) ----------
+
+const PROGRESS_KEY = /^\d{1,3}\/[^/]+\/(gym|home)$/;
+const PROGRESS_POS = /^\d{1,3}\/(\d{1,3}|r)$/;
+const MAX_MARKS = 50;
+
+// progress : { "<semaine>/<sessionId>/<gym|home>": { "<bloc>/<item>" ou "<bloc>/r": [bool, ...] } }
+function validateProgress(progress) {
+  if (!isPlainObject(progress)) return ['« progress » doit être un objet'];
+  const errors = [];
+  for (const [key, entry] of Object.entries(progress)) {
+    if (!PROGRESS_KEY.test(key)) { errors.push(`progress : clé invalide « ${key} »`); continue; }
+    if (!isPlainObject(entry)) { errors.push(`progress « ${key} » : objet attendu`); continue; }
+    for (const [pos, marks] of Object.entries(entry)) {
+      if (!PROGRESS_POS.test(pos)) errors.push(`progress « ${key} » : position invalide « ${pos} »`);
+      else if (!Array.isArray(marks) || marks.length > MAX_MARKS || marks.some((m) => typeof m !== 'boolean')) {
+        errors.push(`progress « ${key} », « ${pos} » : liste de booléens attendue`);
+      }
+    }
+  }
+  return errors.slice(0, 20);
+}
+
 // ---------- sauvegarde (export / import) ----------
 
 function validateBackup(data) {
@@ -443,6 +490,7 @@ function validateBackup(data) {
   if (data.logs !== undefined && !Array.isArray(data.logs)) errors.push('« logs » doit être une liste');
   if (data.testResults !== undefined && !Array.isArray(data.testResults)) errors.push('« testResults » doit être une liste');
   if (data.preferences !== undefined && !isPlainObject(data.preferences)) errors.push('« preferences » doit être un objet');
+  if (data.progress !== undefined) errors.push(...validateProgress(data.progress));
   return errors;
 }
 
@@ -531,6 +579,41 @@ export const store = {
     });
   },
 
+  // Cases cochées d'une position (bloc/item, ou bloc/r pour les tours). Tout décoché : la position disparaît.
+  saveProgress(key, pos, marks) {
+    return mutate((db) => {
+      if (typeof key !== 'string' || !PROGRESS_KEY.test(key)) throw new StoreError(400, 'clé de progression invalide');
+      if (typeof pos !== 'string' || !PROGRESS_POS.test(pos)) throw new StoreError(400, 'position invalide');
+      if (!Array.isArray(marks) || marks.length > MAX_MARKS || marks.some((m) => typeof m !== 'boolean')) {
+        throw new StoreError(400, 'liste de booléens attendue');
+      }
+      if (!isPlainObject(db.progress)) db.progress = {};
+      const entry = isPlainObject(db.progress[key]) ? db.progress[key] : {};
+      if (marks.some(Boolean)) entry[pos] = [...marks];
+      else delete entry[pos];
+      if (Object.keys(entry).length) db.progress[key] = entry;
+      else delete db.progress[key];
+      return { ok: true };
+    });
+  },
+
+  resetProgress(key) {
+    return mutate((db) => {
+      if (isPlainObject(db.progress)) delete db.progress[key];
+      return { ok: true };
+    });
+  },
+
+  // Préférence : lancer le repos en cochant une série (activé par défaut).
+  saveAutoRest(on) {
+    return mutate((db) => {
+      if (typeof on !== 'boolean') throw new StoreError(400, 'booléen attendu');
+      if (!isPlainObject(db.preferences)) db.preferences = {};
+      db.preferences.autoRest = on;
+      return { autoRest: on };
+    });
+  },
+
   async saveConfig(body) {
     const media = await loadMedia();
     return mutate(async (db) => {
@@ -593,9 +676,10 @@ export const store = {
       db.logs = Array.isArray(data.logs) ? structuredClone(data.logs) : [];
       db.testResults = Array.isArray(data.testResults) ? structuredClone(data.testResults) : [];
       db.preferences = isPlainObject(data.preferences) ? structuredClone(data.preferences) : {};
+      db.progress = isPlainObject(data.progress) ? structuredClone(data.progress) : {};
       db.programVersion = Number(data.programVersion) || 1;
       if (data.configEditedAt) db.configEditedAt = data.configEditedAt;
-      for (const k of JOURNAL_KEYS) if (db[k] === undefined) db[k] = k === 'preferences' ? {} : [];
+      for (const k of JOURNAL_KEYS) if (db[k] === undefined) db[k] = k === 'preferences' || k === 'progress' ? {} : [];
       cleanSwaps(db);
     });
     await writeChain;
