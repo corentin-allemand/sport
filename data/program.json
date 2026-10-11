@@ -1,0 +1,1861 @@
+{
+  "programVersion": 1,
+  "meta": {
+    "version": 1
+  },
+  "program": {
+    "id": "ski-moto-2026",
+    "name": "Ski + moto piste",
+    "startDate": "2026-10-12",
+    "weeks": 13,
+    "schedule": {
+      "A": 1,
+      "B": 3,
+      "C": 5
+    },
+    "goals": [
+      {
+        "title": "Ski (fin février / début mars)",
+        "text": "Quadriceps solides et endurants en excentrique, genoux protégés, équilibre, gainage, cardio pour enchaîner 6 jours intensifs sans s'effondrer en fin de semaine."
+      },
+      {
+        "title": "Moto piste (mars/avril) et 4h de Carole en équipe",
+        "text": "Tenir des relais de 45 min à 1h. Gainage et adducteurs pour la position, avant-bras sans arm pump, nuque et haut du dos (casque, freinages), cardio pour rester lucide en fin de relais."
+      },
+      {
+        "title": "Socle commun",
+        "text": "Force des jambes, gainage anti-rotation, mobilité hanches et chevilles, cardio."
+      }
+    ],
+    "rules": [
+      {
+        "title": "Charges au RPE",
+        "text": "Effort ressenti sur 10 : RPE 7 = il te reste 3 reps en réserve, RPE 8 = 2 reps. Pas de charge imposée, tu ajustes à la sensation."
+      },
+      {
+        "title": "Échauffement 8 à 10 min",
+        "text": "Avant chaque séance : 5 min rameur ou vélo, mobilité hanches / chevilles / épaules, 2 séries légères du premier exercice."
+      },
+      {
+        "title": "Bonus facultatif",
+        "text": "1 sortie cardio zone 2 de 30 à 45 min (vélo, course, rameur), à une allure où tu peux parler."
+      },
+      {
+        "title": "Douleur articulaire",
+        "text": "Genou, épaule, poignet : on arrête l'exercice, on le remplace. Courbatures oui, douleur non."
+      },
+      {
+        "title": "Séance ratée",
+        "text": "On ne rattrape pas, on reprend le planning. Pas de salle : fallback maison de la même lettre."
+      },
+      {
+        "title": "Sauts et pliométrie",
+        "text": "Réception souple et silencieuse, sur sol amorti (tapis, gazon), jamais en fin de séance quand la technique se dégrade. Le volume indiqué est un maximum, pas un objectif."
+      }
+    ],
+    "phases": [
+      {
+        "id": "p1",
+        "name": "Fondation",
+        "weeks": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "description": "Technique, volume, tendons et articulations. Séries de 10 à 12, RPE 6 à 7, repos 60 à 90 s. Descente lente (3 s) sur tous les exercices de jambes."
+      },
+      {
+        "id": "p2",
+        "name": "Force",
+        "weeks": [
+          5,
+          6,
+          7,
+          8
+        ],
+        "description": "Exercices principaux en 4 x 6 à 8, RPE 8, repos 2 min. Accessoires en 3 x 8 à 10. Isométries plus longues et lestées."
+      },
+      {
+        "id": "p3",
+        "name": "Puissance et endurance spécifique",
+        "weeks": [
+          9,
+          10,
+          11,
+          12
+        ],
+        "description": "Transfert vers le terrain : explosivité, pliométrie, endurance de force, isométries longues, circuits \"relais\". S11 et S12 tombent pendant les fêtes : le fallback maison est accepté sans culpabilité."
+      },
+      {
+        "id": "p4",
+        "name": "Tests et bilan",
+        "weeks": [
+          13
+        ],
+        "description": "Semaine 13 : tests de fin de programme et bilan. Les séances A, B et C reprennent les prescriptions de la phase 1."
+      }
+    ],
+    "testWeeks": [
+      1,
+      5,
+      9,
+      13
+    ]
+  },
+  "exercises": [
+    {
+      "id": "back-squat",
+      "name": "Back squat",
+      "aka": "ou goblet squat",
+      "muscles": [
+        "Quadriceps",
+        "Fessiers",
+        "Lombaires"
+      ],
+      "description": "Barre sur le haut du dos, pieds largeur d'épaules. Descends en poussant les hanches en arrière jusqu'à la parallèle, puis remonte en poussant le sol. Le goblet squat (haltère contre la poitrine) est la version simplifiée.",
+      "cues": [
+        "Descente contrôlée 3 s",
+        "Genoux dans l'axe des pieds",
+        "Dos gainé, poitrine haute"
+      ],
+      "equipment": "Barre et rack",
+      "group": "quadriceps"
+    },
+    {
+      "id": "romanian-deadlift",
+      "name": "Soulevé de terre roumain",
+      "aka": "ou RDL",
+      "muscles": [
+        "Ischio-jambiers",
+        "Fessiers",
+        "Lombaires"
+      ],
+      "description": "Barre ou haltères devant les cuisses, jambes presque tendues. Pousse les hanches en arrière en gardant le dos plat, descends sous les genoux, puis reviens en serrant les fessiers.",
+      "cues": [
+        "Ischios forts = genoux protégés",
+        "Dos plat, barre collée aux jambes",
+        "Les hanches reculent, les genoux bougent peu"
+      ],
+      "equipment": "Barre ou haltères",
+      "group": "ischios"
+    },
+    {
+      "id": "bulgarian-split-squat",
+      "name": "Fentes bulgares",
+      "muscles": [
+        "Quadriceps",
+        "Fessiers",
+        "Équilibre"
+      ],
+      "description": "Pied arrière posé sur un banc, pied avant à environ un grand pas. Descends à la verticale jusqu'à frôler le sol avec le genou arrière, puis remonte en poussant sur la jambe avant.",
+      "cues": [
+        "Genou dans l'axe du pied",
+        "Buste droit, légèrement penché",
+        "Poids sur le talon avant"
+      ],
+      "equipment": "Banc, haltères (optionnel)",
+      "group": "quadriceps"
+    },
+    {
+      "id": "step-down",
+      "name": "Step-down excentrique sur box",
+      "muscles": [
+        "Quadriceps",
+        "Fessiers",
+        "Stabilité du genou"
+      ],
+      "description": "Debout sur une box, sur une jambe. Descends lentement l'autre pied vers le sol en fléchissant la jambe d'appui, touche du talon, puis remonte.",
+      "cues": [
+        "Descente 4 s, le geste du ski",
+        "Genou dans l'axe du pied",
+        "Bassin stable, pas de bascule"
+      ],
+      "equipment": "Box ou marche, haltère (optionnel)",
+      "group": "quadriceps"
+    },
+    {
+      "id": "leg-curl",
+      "name": "Leg curl",
+      "aka": "ou nordic curl",
+      "muscles": [
+        "Ischio-jambiers"
+      ],
+      "description": "À la machine, allongé ou assis, ramène les talons vers les fessiers puis reviens lentement. Version nordic curl : à genoux, chevilles bloquées, laisse-toi tomber vers l'avant le plus lentement possible.",
+      "cues": [
+        "Prévention ligaments croisés",
+        "Retour lent, 3 s",
+        "Bassin gainé, pas de cambrure"
+      ],
+      "equipment": "Machine de leg curl ou chevilles bloquées",
+      "group": "ischios"
+    },
+    {
+      "id": "wall-sit",
+      "name": "Chaise contre le mur",
+      "muscles": [
+        "Quadriceps",
+        "Fessiers"
+      ],
+      "description": "Dos plaqué contre un mur, cuisses à l'horizontale, genoux à 90 degrés au-dessus des chevilles. Tiens la position le temps demandé, avec une charge sur les cuisses en phase 2.",
+      "cues": [
+        "Position de ski",
+        "Dos plaqué, cuisses parallèles au sol",
+        "Respiration continue"
+      ],
+      "equipment": "Mur, charge (optionnel)",
+      "group": "quadriceps"
+    },
+    {
+      "id": "skater-jump",
+      "name": "Sauts latéraux (skater)",
+      "muscles": [
+        "Fessiers",
+        "Quadriceps",
+        "Abducteurs",
+        "Équilibre"
+      ],
+      "description": "Saute latéralement d'une jambe sur l'autre comme un patineur, le pied arrière passe derrière la jambe d'appui. Reçois-toi sur une jambe et stabilise avant de repartir.",
+      "cues": [
+        "Réception stable 1 s",
+        "Réception souple et silencieuse",
+        "Genou dans l'axe du pied"
+      ],
+      "equipment": "Poids du corps",
+      "group": "pliometrie"
+    },
+    {
+      "id": "copenhagen-plank",
+      "name": "Copenhagen plank",
+      "muscles": [
+        "Adducteurs",
+        "Obliques",
+        "Gainage"
+      ],
+      "description": "Planche latérale sur l'avant-bras, la jambe du dessus posée sur un banc, jambe du dessous libre. Monte le bassin et tiens la position, puis change de côté.",
+      "cues": [
+        "Adducteurs : ski et serrer la moto",
+        "Corps aligné, bassin haut",
+        "Commence avec le genou sur le banc si c'est trop dur"
+      ],
+      "equipment": "Banc",
+      "group": "adducteurs"
+    },
+    {
+      "id": "pull-up",
+      "name": "Tractions",
+      "aka": "ou tirage vertical",
+      "muscles": [
+        "Grand dorsal",
+        "Biceps",
+        "Haut du dos"
+      ],
+      "description": "Suspendu à la barre, mains un peu plus larges que les épaules. Tire la poitrine vers la barre en ramenant les coudes vers les côtes, puis redescends bras tendus. Tirage vertical à la poulie si besoin.",
+      "cues": [
+        "Haut du dos, tenir le guidon",
+        "Épaules basses, pas de balancier",
+        "Descente contrôlée bras tendus"
+      ],
+      "equipment": "Barre de traction (lest en option)",
+      "group": "dos"
+    },
+    {
+      "id": "dumbbell-row",
+      "name": "Rowing haltère ou barre",
+      "aka": "ou rowing barre",
+      "muscles": [
+        "Dos",
+        "Rhomboïdes",
+        "Biceps"
+      ],
+      "description": "Buste penché, dos plat, un haltère (ou une barre) dans la main. Tire vers la hanche en serrant les omoplates, puis redescends en contrôlant.",
+      "cues": [
+        "Omoplates serrées",
+        "Dos plat, nuque neutre",
+        "Coude près du corps"
+      ],
+      "equipment": "Haltères ou barre, banc",
+      "group": "dos"
+    },
+    {
+      "id": "dumbbell-shoulder-press",
+      "name": "Développé militaire haltères",
+      "muscles": [
+        "Deltoïdes",
+        "Triceps",
+        "Haut des pectoraux"
+      ],
+      "description": "Debout ou assis, haltères à hauteur d'épaules. Pousse au-dessus de la tête jusqu'à bras tendus, puis redescends lentement à hauteur d'oreilles.",
+      "cues": [
+        "Épaules stables",
+        "Abdos et fessiers serrés, pas de cambrure",
+        "Avant-bras à la verticale"
+      ],
+      "equipment": "Haltères",
+      "group": "epaules"
+    },
+    {
+      "id": "push-up",
+      "name": "Pompes",
+      "aka": "ou développé couché",
+      "muscles": [
+        "Pectoraux",
+        "Triceps",
+        "Épaules",
+        "Gainage"
+      ],
+      "description": "Mains sous les épaules, corps aligné de la tête aux talons. Descends la poitrine près du sol puis repousse. Le développé couché à la barre ou aux haltères est la version salle.",
+      "cues": [
+        "Freinages",
+        "Corps gainé, bassin aligné",
+        "Coudes à 45 degrés du buste"
+      ],
+      "equipment": "Poids du corps (ou barre et banc)",
+      "group": "pectoraux"
+    },
+    {
+      "id": "farmer-carry",
+      "name": "Farmer carry lourd",
+      "muscles": [
+        "Avant-bras",
+        "Trapèzes",
+        "Gainage",
+        "Grip"
+      ],
+      "description": "Un haltère lourd dans chaque main, bras le long du corps. Marche à pas courts sur la distance demandée, épaules basses, sans pencher le buste.",
+      "cues": [
+        "Grip",
+        "Épaules basses et dos droit",
+        "Pas courts, gainage serré"
+      ],
+      "equipment": "Haltères ou kettlebells lourds",
+      "group": "bras-grip"
+    },
+    {
+      "id": "dead-hang",
+      "name": "Suspension à la barre (dead hang)",
+      "muscles": [
+        "Avant-bras",
+        "Grip",
+        "Épaules"
+      ],
+      "description": "Suspends-toi à une barre de traction, bras tendus, prise complète. Garde les épaules actives, sans te laisser pendre passivement, et tiens le temps demandé.",
+      "cues": [
+        "Anti arm pump",
+        "Épaules actives, loin des oreilles",
+        "Respiration calme"
+      ],
+      "equipment": "Barre de traction",
+      "group": "bras-grip"
+    },
+    {
+      "id": "wrist-roller",
+      "name": "Wrist roller",
+      "aka": "ou flexions / extensions poignets",
+      "muscles": [
+        "Fléchisseurs du poignet",
+        "Extenseurs du poignet",
+        "Avant-bras"
+      ],
+      "description": "Barre avec une corde et un poids : bras tendus devant toi, enroule la corde en tournant les poignets, puis déroule lentement. Alternative : flexions et extensions des poignets avec un haltère léger.",
+      "cues": [
+        "Fléchisseurs ET extenseurs",
+        "Bras tendus, épaules stables",
+        "Charge légère, mouvement lent"
+      ],
+      "equipment": "Wrist roller ou haltère léger",
+      "group": "bras-grip"
+    },
+    {
+      "id": "neck-isometric",
+      "name": "Nuque isométrique",
+      "muscles": [
+        "Nuque",
+        "Trapèzes"
+      ],
+      "description": "Pose la main (ou un élastique) contre la tête et pousse sans bouger, dans les 4 directions : avant, arrière, gauche, droite. Tiens le temps demandé dans chaque direction.",
+      "cues": [
+        "Casque, freinages, accélérations",
+        "Pousse progressivement, sans à-coup",
+        "Menton légèrement rentré"
+      ],
+      "equipment": "Main ou élastique",
+      "group": "nuque"
+    },
+    {
+      "id": "pallof-press",
+      "name": "Pallof press",
+      "muscles": [
+        "Obliques",
+        "Transverse",
+        "Gainage anti-rotation"
+      ],
+      "description": "Élastique ou poulie sur le côté, à hauteur de poitrine. Pousse les bras devant toi, tiens, puis reviens, sans laisser le buste tourner.",
+      "cues": [
+        "Anti-rotation, changements d'angle",
+        "Bassin et épaules face devant",
+        "Expire en poussant"
+      ],
+      "equipment": "Élastique ou poulie",
+      "group": "gainage"
+    },
+    {
+      "id": "kettlebell-swing",
+      "name": "Kettlebell swing",
+      "muscles": [
+        "Fessiers",
+        "Ischio-jambiers",
+        "Lombaires",
+        "Cardio"
+      ],
+      "description": "Kettlebell entre les jambes, dos plat. Une poussée de hanches l'envoie à hauteur d'épaules, les bras ne font que guider. Laisse-la retomber et réabsorbe avec les hanches.",
+      "cues": [
+        "Le mouvement vient des hanches",
+        "Dos plat, bras détendus",
+        "Fessiers serrés en haut"
+      ],
+      "equipment": "Kettlebell",
+      "group": "fessiers"
+    },
+    {
+      "id": "hip-thrust",
+      "name": "Hip thrust",
+      "muscles": [
+        "Fessiers",
+        "Ischio-jambiers"
+      ],
+      "description": "Haut du dos appuyé sur un banc, barre sur les hanches. Pousse le bassin vers le haut jusqu'à aligner genoux, hanches et épaules, serre les fessiers, puis redescends.",
+      "cues": [
+        "Menton rentré, regard devant",
+        "Tibias verticaux en haut",
+        "Fessiers serrés 1 s en haut"
+      ],
+      "equipment": "Banc, barre ou haltère",
+      "group": "fessiers"
+    },
+    {
+      "id": "step-up",
+      "name": "Step-up sur box",
+      "muscles": [
+        "Quadriceps",
+        "Fessiers"
+      ],
+      "description": "Un pied sur une box, monte en poussant sur la jambe d'appui sans t'aider de l'autre pied, puis redescends lentement.",
+      "cues": [
+        "Poussée par la jambe sur la box",
+        "Buste droit",
+        "Descente contrôlée"
+      ],
+      "equipment": "Box, haltères (optionnel)",
+      "group": "quadriceps"
+    },
+    {
+      "id": "box-jump",
+      "name": "Box jump",
+      "muscles": [
+        "Quadriceps",
+        "Fessiers",
+        "Mollets",
+        "Explosivité"
+      ],
+      "description": "Saute à pieds joints sur une box en t'aidant des bras, réception souple en position de squat partiel. Redescends en marchant, jamais en sautant.",
+      "cues": [
+        "Réception souple et silencieuse",
+        "Redescendre en marchant",
+        "Arrête dès que la technique se dégrade"
+      ],
+      "equipment": "Box",
+      "group": "pliometrie"
+    },
+    {
+      "id": "rowing-machine",
+      "name": "Rameur",
+      "muscles": [
+        "Dos",
+        "Jambes",
+        "Cardio"
+      ],
+      "description": "Pousse avec les jambes, puis bascule le buste et tire la poignée vers le bas des côtes, puis reviens dans l'ordre inverse. Garde une cadence régulière.",
+      "cues": [
+        "Jambes, buste, bras à la poussée",
+        "Dos gainé, pas arrondi",
+        "Cadence régulière"
+      ],
+      "equipment": "Rameur",
+      "group": "cardio"
+    },
+    {
+      "id": "stationary-bike",
+      "name": "Vélo",
+      "muscles": [
+        "Quadriceps",
+        "Fessiers",
+        "Cardio"
+      ],
+      "description": "Pédale à l'allure demandée sur un vélo d'appartement ou de salle, selle réglée à hauteur de hanche. Garde une cadence fluide pendant les intervalles.",
+      "cues": [
+        "Selle à hauteur de hanche",
+        "Cadence fluide, 80 à 95 tours/min",
+        "Buste détendu"
+      ],
+      "equipment": "Vélo stationnaire",
+      "group": "cardio"
+    },
+    {
+      "id": "moto-position-hold",
+      "name": "Position moto isométrique",
+      "muscles": [
+        "Quadriceps",
+        "Fessiers",
+        "Dos",
+        "Avant-bras"
+      ],
+      "description": "Squat partiel, buste penché, bras fléchis tenant une barre devant toi comme un guidon. Tiens la position sans bouger, en respirant.",
+      "cues": [
+        "Genoux fléchis, adducteurs serrés",
+        "Dos plat, regard devant",
+        "Bras détendus, pas de crispation"
+      ],
+      "equipment": "Barre (optionnel)",
+      "group": "quadriceps"
+    },
+    {
+      "id": "plank",
+      "name": "Planche",
+      "muscles": [
+        "Abdominaux",
+        "Transverse",
+        "Épaules"
+      ],
+      "description": "En appui sur les avant-bras et les pointes de pieds, corps aligné de la tête aux talons. Serre abdos et fessiers et tiens le temps demandé.",
+      "cues": [
+        "Corps aligné, bassin ni haut ni bas",
+        "Abdos et fessiers serrés",
+        "Respiration continue"
+      ],
+      "equipment": "Poids du corps",
+      "group": "gainage"
+    },
+    {
+      "id": "side-plank",
+      "name": "Planche latérale",
+      "muscles": [
+        "Obliques",
+        "Fessiers moyens",
+        "Épaules"
+      ],
+      "description": "Sur le côté, appui sur l'avant-bras, pieds empilés. Monte le bassin pour aligner le corps et tiens, puis change de côté.",
+      "cues": [
+        "Corps aligné de la tête aux pieds",
+        "Bassin haut",
+        "Épaule au-dessus du coude"
+      ],
+      "equipment": "Poids du corps",
+      "group": "gainage"
+    },
+    {
+      "id": "hollow-hold",
+      "name": "Hollow hold",
+      "muscles": [
+        "Abdominaux",
+        "Fléchisseurs de hanche"
+      ],
+      "description": "Allongé sur le dos, bras et jambes tendus décollés du sol, bas du dos plaqué. Tiens la position en gardant le bassin basculé.",
+      "cues": [
+        "Bas du dos plaqué au sol",
+        "Menton légèrement rentré",
+        "Jambes plus hautes si le dos décolle"
+      ],
+      "equipment": "Poids du corps",
+      "group": "gainage"
+    },
+    {
+      "id": "bird-dog",
+      "name": "Bird dog",
+      "muscles": [
+        "Lombaires",
+        "Fessiers",
+        "Transverse"
+      ],
+      "description": "À quatre pattes, tends un bras et la jambe opposée à l'horizontale, sans bouger le bassin. Reviens et alterne.",
+      "cues": [
+        "Bassin immobile",
+        "Dos plat, nuque neutre",
+        "Mouvement lent et contrôlé"
+      ],
+      "equipment": "Poids du corps",
+      "group": "gainage"
+    },
+    {
+      "id": "tempo-squat",
+      "name": "Squat tempo",
+      "muscles": [
+        "Quadriceps",
+        "Fessiers"
+      ],
+      "description": "Squat au poids du corps avec tempo : 3 s de descente, 1 s de pause en bas, puis remontée. Garde le rythme sur toutes les répétitions.",
+      "cues": [
+        "3 s de descente, 1 s de pause",
+        "Genoux dans l'axe des pieds",
+        "Talons au sol"
+      ],
+      "equipment": "Poids du corps",
+      "group": "quadriceps"
+    },
+    {
+      "id": "single-leg-rdl",
+      "name": "Soulevé de terre roumain sur une jambe",
+      "muscles": [
+        "Ischio-jambiers",
+        "Fessiers",
+        "Équilibre"
+      ],
+      "description": "Debout sur une jambe, penche le buste en envoyant l'autre jambe tendue derrière toi, dos plat, puis reviens. Bras le long du corps ou petit poids en main.",
+      "cues": [
+        "Bassin face au sol",
+        "Dos plat",
+        "Jambe d'appui légèrement fléchie"
+      ],
+      "equipment": "Poids du corps (haltère en option)",
+      "group": "ischios"
+    },
+    {
+      "id": "inverted-row",
+      "name": "Rowing inversé",
+      "muscles": [
+        "Dos",
+        "Biceps",
+        "Rhomboïdes"
+      ],
+      "description": "Sous une table solide, allongé sous le plateau, attrape le bord et tire la poitrine vers lui, corps gainé. Alternative : élastique ou serviette coincée dans une porte.",
+      "cues": [
+        "Corps droit comme une planche",
+        "Omoplates serrées en haut",
+        "Table bien stable"
+      ],
+      "equipment": "Table solide, ou élastique / serviette et porte",
+      "group": "dos"
+    },
+    {
+      "id": "pike-push-up",
+      "name": "Pike push-up",
+      "muscles": [
+        "Épaules",
+        "Triceps"
+      ],
+      "description": "En V inversé, fesses en l'air, mains au sol. Fléchis les coudes pour approcher la tête du sol, puis repousse.",
+      "cues": [
+        "Hanches hautes",
+        "Coudes vers l'arrière, pas sur les côtés",
+        "Tête entre les bras"
+      ],
+      "equipment": "Poids du corps",
+      "group": "epaules"
+    },
+    {
+      "id": "ytw-raise",
+      "name": "Y-T-W allongé",
+      "muscles": [
+        "Haut du dos",
+        "Trapèzes inférieurs",
+        "Arrière des épaules"
+      ],
+      "description": "Allongé sur le ventre, lève les bras en forme de Y, puis de T, puis de W, en serrant les omoplates à chaque position.",
+      "cues": [
+        "Omoplates serrées",
+        "Pouces vers le plafond",
+        "Nuque neutre, mouvement lent"
+      ],
+      "equipment": "Poids du corps",
+      "group": "dos"
+    },
+    {
+      "id": "towel-grip",
+      "name": "Serviette essorée",
+      "muscles": [
+        "Avant-bras",
+        "Grip"
+      ],
+      "description": "Serviette roulée dans les deux mains, serre et essore-la en tournant les poignets en sens inverses, en continu pendant la durée demandée.",
+      "cues": [
+        "Serrage maximal en continu",
+        "Bras légèrement fléchis",
+        "Équilibre les deux mains"
+      ],
+      "equipment": "Serviette",
+      "group": "bras-grip"
+    },
+    {
+      "id": "squat-jump",
+      "name": "Squat jump",
+      "muscles": [
+        "Quadriceps",
+        "Fessiers",
+        "Explosivité"
+      ],
+      "description": "Descends en squat puis saute le plus haut possible en extension complète. Reçois-toi souple et enchaîne.",
+      "cues": [
+        "Réception souple et silencieuse",
+        "Extension complète des hanches",
+        "Arrête si la technique se dégrade"
+      ],
+      "equipment": "Poids du corps",
+      "group": "pliometrie"
+    },
+    {
+      "id": "burpee",
+      "name": "Burpee",
+      "muscles": [
+        "Corps entier",
+        "Cardio"
+      ],
+      "description": "Squat, mains au sol, jambes en planche, pompe, retour en squat, puis saut en extension.",
+      "cues": [
+        "Corps gainé en planche",
+        "Enchaînement fluide",
+        "Réception souple"
+      ],
+      "equipment": "Poids du corps",
+      "group": "cardio"
+    },
+    {
+      "id": "mountain-climber",
+      "name": "Mountain climber",
+      "muscles": [
+        "Abdominaux",
+        "Épaules",
+        "Cardio"
+      ],
+      "description": "En position de planche haute, ramène les genoux vers la poitrine en alternance, vite, sans lever le bassin.",
+      "cues": [
+        "Bassin bas, dos plat",
+        "Épaules au-dessus des mains",
+        "Rythme rapide"
+      ],
+      "equipment": "Poids du corps",
+      "group": "cardio"
+    },
+    {
+      "id": "superman",
+      "name": "Superman",
+      "muscles": [
+        "Lombaires",
+        "Fessiers"
+      ],
+      "description": "Allongé sur le ventre, lève simultanément bras et jambes tendus, tiens 1 à 2 s, puis redescends.",
+      "cues": [
+        "Regard vers le sol, nuque neutre",
+        "Fessiers serrés",
+        "Mouvement contrôlé"
+      ],
+      "equipment": "Poids du corps",
+      "group": "dos"
+    },
+    {
+      "id": "stair-climb",
+      "name": "Montée d'escaliers",
+      "muscles": [
+        "Quadriceps",
+        "Fessiers",
+        "Cardio"
+      ],
+      "description": "Monte les escaliers à allure soutenue en continu, en redescendant en marchant. Remplace l'EMOM quand tu es à l'hôtel.",
+      "cues": [
+        "Allure soutenue et régulière",
+        "Poser tout le pied sur la marche",
+        "Redescendre en marchant"
+      ],
+      "equipment": "Escaliers",
+      "group": "cardio"
+    },
+    {
+      "id": "goblet-squat",
+      "name": "Goblet squat",
+      "group": "quadriceps",
+      "muscles": [
+        "Quadriceps",
+        "Fessiers",
+        "Gainage"
+      ],
+      "description": "Tiens un haltère ou un kettlebell contre la poitrine. Descends entre les jambes, buste droit, puis remonte en poussant le sol. Version simple du back squat.",
+      "cues": [
+        "Coudes à l'intérieur des genoux",
+        "Buste haut",
+        "Descente contrôlée"
+      ],
+      "equipment": "Haltère ou kettlebell"
+    },
+    {
+      "id": "leg-press",
+      "name": "Presse à cuisses",
+      "group": "quadriceps",
+      "muscles": [
+        "Quadriceps",
+        "Fessiers"
+      ],
+      "description": "Assis sur la machine, pieds à largeur d'épaules sur la plateforme. Descends jusqu'à environ 90 degrés de flexion de genou, puis repousse sans verrouiller les genoux.",
+      "cues": [
+        "Bassin collé au dossier",
+        "Genoux dans l'axe des pieds",
+        "Ne verrouille pas en haut"
+      ],
+      "equipment": "Machine presse à cuisses"
+    },
+    {
+      "id": "front-squat",
+      "name": "Front squat",
+      "group": "quadriceps",
+      "muscles": [
+        "Quadriceps",
+        "Fessiers",
+        "Gainage"
+      ],
+      "description": "Barre posée sur l'avant des épaules, coudes hauts. Descends en gardant le buste vertical, puis remonte. Sollicite davantage les quadriceps que le back squat.",
+      "cues": [
+        "Coudes hauts",
+        "Buste vertical",
+        "Descente à la parallèle"
+      ],
+      "equipment": "Barre et rack"
+    },
+    {
+      "id": "nordic-curl",
+      "name": "Nordic curl",
+      "group": "ischios",
+      "muscles": [
+        "Ischio-jambiers",
+        "Fessiers"
+      ],
+      "description": "À genoux, chevilles bloquées sous un appui. Descends le buste vers l'avant le plus lentement possible en gardant le corps gainé, puis aide-toi des mains pour remonter. Excellent excentrique pour protéger les ischios.",
+      "cues": [
+        "Bassin aligné avec les épaules et les genoux",
+        "Descente la plus lente possible",
+        "Pousse avec les mains en bas pour remonter"
+      ],
+      "equipment": "Partenaire, banc ou barre pour bloquer les chevilles"
+    },
+    {
+      "id": "good-morning",
+      "name": "Good morning",
+      "group": "ischios",
+      "muscles": [
+        "Ischio-jambiers",
+        "Lombaires",
+        "Fessiers"
+      ],
+      "description": "Barre sur le haut du dos, genoux légèrement fléchis. Bascule le buste vers l'avant en poussant les hanches en arrière, dos plat, puis reviens en contractant les fessiers. Se fait aussi avec un élastique ou sans charge.",
+      "cues": [
+        "Dos plat",
+        "Hanches en arrière",
+        "Genoux légèrement fléchis"
+      ],
+      "equipment": "Barre (ou élastique, ou poids du corps)"
+    },
+    {
+      "id": "glute-bridge",
+      "name": "Pont fessier",
+      "group": "fessiers",
+      "muscles": [
+        "Fessiers",
+        "Ischio-jambiers"
+      ],
+      "description": "Allongé sur le dos, genoux fléchis, pieds au sol. Pousse dans les talons pour monter le bassin jusqu'à l'alignement épaules, hanches, genoux, puis redescends lentement. Version sans matériel du hip thrust.",
+      "cues": [
+        "Pousse dans les talons",
+        "Contracte les fessiers en haut",
+        "Ne cambre pas le bas du dos"
+      ],
+      "equipment": "Poids du corps (haltère en option)"
+    },
+    {
+      "id": "cossack-squat",
+      "name": "Squat cosaque",
+      "group": "adducteurs",
+      "muscles": [
+        "Adducteurs",
+        "Quadriceps",
+        "Fessiers"
+      ],
+      "description": "Jambes très écartées, descends sur une jambe en gardant l'autre tendue, pied à plat ou pointe vers le haut. Remonte et alterne. Bon travail de mobilité et de force des adducteurs.",
+      "cues": [
+        "Talon de la jambe fléchie au sol",
+        "Buste droit",
+        "Jambe tendue, orteils vers le haut"
+      ],
+      "equipment": "Poids du corps (haltère en option)"
+    },
+    {
+      "id": "adductor-machine",
+      "name": "Machine à adducteurs",
+      "group": "adducteurs",
+      "muscles": [
+        "Adducteurs"
+      ],
+      "description": "Assis sur la machine, cuisses écartées contre les coussins. Rapproche les jambes de façon contrôlée, marque une pause, puis reviens lentement.",
+      "cues": [
+        "Mouvement lent",
+        "Dos calé contre le dossier",
+        "Pause en fermeture"
+      ],
+      "equipment": "Machine à adducteurs"
+    },
+    {
+      "id": "bench-press",
+      "name": "Développé couché",
+      "group": "pectoraux",
+      "muscles": [
+        "Pectoraux",
+        "Triceps",
+        "Épaules"
+      ],
+      "description": "Allongé sur le banc, omoplates serrées, pieds au sol. Descends la barre vers le milieu de la poitrine, puis repousse. Version salle des pompes.",
+      "cues": [
+        "Omoplates serrées",
+        "Coudes à environ 45 degrés",
+        "Barre au milieu de la poitrine"
+      ],
+      "equipment": "Barre, banc et rack"
+    },
+    {
+      "id": "plate-pinch",
+      "name": "Pince de disque",
+      "group": "bras-grip",
+      "muscles": [
+        "Avant-bras",
+        "Grip",
+        "Doigts"
+      ],
+      "description": "Pince deux disques lisses ensemble, face lisse vers l'extérieur, entre les doigts et le pouce. Tiens debout ou marche le temps prescrit.",
+      "cues": [
+        "Face lisse vers l'extérieur",
+        "Épaules basses",
+        "Serre avec les doigts et le pouce"
+      ],
+      "equipment": "Deux disques lisses"
+    },
+    {
+      "id": "neck-band-isometric",
+      "name": "Nuque isométrique à l'élastique",
+      "aka": "ou nuque avec élastique",
+      "group": "nuque",
+      "muscles": [
+        "Nuque",
+        "Trapèzes"
+      ],
+      "description": "Fixe un élastique sur un support à hauteur de tête et place-le autour du front, puis recule pour le tendre. Tiens la position sans bouger la tête, puis change de direction (avant, côtés).",
+      "cues": [
+        "Menton rentré",
+        "Tiens sans bouger",
+        "Tension progressive, jamais de secousse"
+      ],
+      "equipment": "Élastique"
+    },
+    {
+      "id": "jump-rope",
+      "name": "Corde à sauter",
+      "group": "cardio",
+      "muscles": [
+        "Mollets",
+        "Épaules",
+        "Cardio",
+        "Coordination"
+      ],
+      "description": "Saute avec une corde en gardant de petits rebonds sur l'avant du pied. Alterne séries de 30 à 60 secondes pour monter le rythme cardiaque.",
+      "cues": [
+        "Petits rebonds",
+        "Coudes près du corps",
+        "Poignets qui tournent la corde"
+      ],
+      "equipment": "Corde à sauter"
+    },
+    {
+      "id": "assault-bike",
+      "name": "Assault bike",
+      "group": "cardio",
+      "muscles": [
+        "Corps entier",
+        "Cardio"
+      ],
+      "description": "Vélo à résistance à air, bras et jambes ensemble. Pédale et pousse-tire avec les bras, en intervalles courts et intenses ou à rythme régulier.",
+      "cues": [
+        "Bras et jambes ensemble",
+        "Dos droit",
+        "Respiration régulière"
+      ],
+      "equipment": "Assault bike (vélo à air)"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "A",
+      "kind": "gym",
+      "homeOf": null,
+      "name": "Jambes, spécial ski",
+      "duration": "60 min",
+      "intro": "Séance de quadriceps et d'excentrique pour tenir la semaine de ski. Descente lente (3 s) sur tous les exercices de jambes en phase 1.",
+      "blocks": [
+        {
+          "title": "Jambes",
+          "items": [
+            {
+              "exerciseId": "back-squat",
+              "prescription": {
+                "p1": "3 x 10",
+                "p2": "4 x 6",
+                "p3": "4 x 5 + 3 squat jumps",
+                "p4": "3 x 10"
+              },
+              "note": "Descente contrôlée 3 s"
+            },
+            {
+              "exerciseId": "romanian-deadlift",
+              "prescription": {
+                "p1": "3 x 10",
+                "p2": "4 x 8",
+                "p3": "4 x 6",
+                "p4": "3 x 10"
+              },
+              "note": "Ischios forts = genoux protégés"
+            },
+            {
+              "exerciseId": "bulgarian-split-squat",
+              "prescription": {
+                "p1": "3 x 10 / jambe",
+                "p2": "3 x 8 / jambe lesté",
+                "p3": "3 x 8 + saut",
+                "p4": "3 x 10 / jambe"
+              },
+              "note": "Genou dans l'axe du pied"
+            },
+            {
+              "exerciseId": "step-down",
+              "prescription": {
+                "p1": "3 x 8 / jambe",
+                "p2": "3 x 8 lesté",
+                "p3": "3 x 10 lesté",
+                "p4": "3 x 8 / jambe"
+              },
+              "note": "Descente 4 s, le geste du ski"
+            },
+            {
+              "exerciseId": "leg-curl",
+              "prescription": {
+                "p1": "3 x 10",
+                "p2": "3 x 8",
+                "p3": "3 x 6",
+                "p4": "3 x 10"
+              },
+              "note": "Prévention ligaments croisés"
+            },
+            {
+              "exerciseId": "wall-sit",
+              "prescription": {
+                "p1": "3 x 40 s",
+                "p2": "3 x 60 s lesté",
+                "p3": "2 x 90 s + 1 x max",
+                "p4": "3 x 40 s"
+              },
+              "note": "Position de ski"
+            },
+            {
+              "exerciseId": "skater-jump",
+              "prescription": {
+                "p1": "3 x 10",
+                "p2": "3 x 12",
+                "p3": "4 x 12 explosifs",
+                "p4": "3 x 10"
+              },
+              "note": "Réception stable 1 s"
+            },
+            {
+              "exerciseId": "copenhagen-plank",
+              "prescription": {
+                "p1": "3 x 20 s / côté",
+                "p2": "3 x 30 s",
+                "p3": "3 x 40 s",
+                "p4": "3 x 20 s / côté"
+              },
+              "note": "Adducteurs : ski et serrer la moto"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "gym",
+      "homeOf": null,
+      "name": "Haut du corps, spécial moto",
+      "duration": "60 min",
+      "intro": "Haut du dos, grip, avant-bras, nuque et anti-rotation pour tenir des relais de 45 min à 1 h.",
+      "blocks": [
+        {
+          "title": "Haut du corps",
+          "items": [
+            {
+              "exerciseId": "pull-up",
+              "prescription": {
+                "p1": "3 x 8",
+                "p2": "4 x 6 lesté",
+                "p3": "4 x 5 + 1 x max",
+                "p4": "3 x 8"
+              },
+              "note": "Haut du dos, tenir le guidon"
+            },
+            {
+              "exerciseId": "dumbbell-row",
+              "prescription": {
+                "p1": "3 x 10",
+                "p2": "4 x 8",
+                "p3": "4 x 8",
+                "p4": "3 x 10"
+              },
+              "note": "Omoplates serrées"
+            },
+            {
+              "exerciseId": "dumbbell-shoulder-press",
+              "prescription": {
+                "p1": "3 x 10",
+                "p2": "4 x 8",
+                "p3": "3 x 8",
+                "p4": "3 x 10"
+              },
+              "note": "Épaules stables"
+            },
+            {
+              "exerciseId": "push-up",
+              "prescription": {
+                "p1": "3 x 12",
+                "p2": "4 x 8",
+                "p3": "3 x max",
+                "p4": "3 x 12"
+              },
+              "note": "Freinages"
+            },
+            {
+              "exerciseId": "farmer-carry",
+              "prescription": {
+                "p1": "3 x 30 m",
+                "p2": "4 x 40 m",
+                "p3": "4 x 40 m + 20 s tenue",
+                "p4": "3 x 30 m"
+              },
+              "note": "Grip"
+            },
+            {
+              "exerciseId": "dead-hang",
+              "prescription": {
+                "p1": "3 x 30 s",
+                "p2": "3 x 45 s",
+                "p3": "3 x 60 s",
+                "p4": "3 x 30 s"
+              },
+              "note": "Anti arm pump"
+            },
+            {
+              "exerciseId": "wrist-roller",
+              "prescription": {
+                "p1": "3 séries",
+                "p2": "3 séries",
+                "p3": "3 séries",
+                "p4": "3 séries"
+              },
+              "note": "Fléchisseurs ET extenseurs"
+            },
+            {
+              "exerciseId": "neck-isometric",
+              "prescription": {
+                "p1": "2 x 15 s",
+                "p2": "2 x 20 s",
+                "p3": "2 x 30 s",
+                "p4": "2 x 15 s"
+              },
+              "note": "Casque, freinages, accélérations"
+            },
+            {
+              "exerciseId": "pallof-press",
+              "prescription": {
+                "p1": "3 x 10 / côté",
+                "p2": "3 x 12",
+                "p3": "3 x 12, tenue 2 s",
+                "p4": "3 x 10 / côté"
+              },
+              "note": "Anti-rotation, changements d'angle"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "kind": "gym",
+      "homeOf": null,
+      "name": "Full body et conditioning",
+      "duration": "50 à 60 min",
+      "intro": "Force explosive, cardio spécifique et gainage.",
+      "blocks": [
+        {
+          "title": "Bloc 1, force explosive (20 min)",
+          "items": [
+            {
+              "exerciseId": "kettlebell-swing",
+              "prescription": {
+                "p1": "4 x 15",
+                "p2": "5 x 15",
+                "p3": "5 x 20",
+                "p4": "4 x 15"
+              }
+            },
+            {
+              "exerciseId": "hip-thrust",
+              "prescription": {
+                "p1": "3 x 10",
+                "p2": "4 x 8",
+                "p3": "4 x 8",
+                "p4": "3 x 10"
+              }
+            },
+            {
+              "exerciseId": "step-up",
+              "prescription": {
+                "p1": "3 x 10 / jambe",
+                "p2": "",
+                "p3": "",
+                "p4": "3 x 10 / jambe"
+              },
+              "note": "Phase 1 : step-up, puis box jump en phases 2 et 3"
+            },
+            {
+              "exerciseId": "box-jump",
+              "prescription": {
+                "p1": "",
+                "p2": "3 x 5",
+                "p3": "4 x 5",
+                "p4": ""
+              },
+              "note": "Réception souple et silencieuse, jamais en fin de séance quand la technique se dégrade"
+            }
+          ]
+        },
+        {
+          "title": "Bloc 2, cardio (20 à 25 min)",
+          "note": "Phase 1 : rameur. Phase 2 : vélo ou rameur. Phase 3 : circuit relais (bloc suivant).",
+          "items": [
+            {
+              "exerciseId": "rowing-machine",
+              "prescription": {
+                "p1": "6 x 2 min, allure soutenue, récup 1 min",
+                "p2": "",
+                "p3": "",
+                "p4": "6 x 2 min, allure soutenue, récup 1 min"
+              }
+            },
+            {
+              "exerciseId": "stationary-bike",
+              "prescription": {
+                "p1": "",
+                "p2": "5 x 4 min à 85 % de l'effort max, récup 2 min",
+                "p3": "",
+                "p4": ""
+              },
+              "note": "Ou rameur"
+            }
+          ]
+        },
+        {
+          "title": "Circuit relais (remplace le cardio en phase 3)",
+          "note": "Phase 3 uniquement : 3 tours de 8 min, sans pause dans le tour, 2 min de récupération entre les tours. Un tour = la séquence ci-dessous, faite 2 fois.",
+          "items": [
+            {
+              "exerciseId": "moto-position-hold",
+              "prescription": {
+                "p1": "",
+                "p2": "",
+                "p3": "1 min",
+                "p4": ""
+              }
+            },
+            {
+              "exerciseId": "skater-jump",
+              "prescription": {
+                "p1": "",
+                "p2": "",
+                "p3": "1 min",
+                "p4": ""
+              }
+            },
+            {
+              "exerciseId": "farmer-carry",
+              "prescription": {
+                "p1": "",
+                "p2": "",
+                "p3": "1 min",
+                "p4": ""
+              }
+            },
+            {
+              "exerciseId": "plank",
+              "prescription": {
+                "p1": "",
+                "p2": "",
+                "p3": "1 min",
+                "p4": ""
+              }
+            }
+          ]
+        },
+        {
+          "title": "Bloc 3, gainage (10 min)",
+          "note": "3 tours.",
+          "items": [
+            {
+              "exerciseId": "plank",
+              "prescription": {
+                "p1": "45 s",
+                "p2": "45 s",
+                "p3": "45 s",
+                "p4": "45 s"
+              }
+            },
+            {
+              "exerciseId": "side-plank",
+              "prescription": {
+                "p1": "30 s / côté",
+                "p2": "30 s / côté",
+                "p3": "30 s / côté",
+                "p4": "30 s / côté"
+              }
+            },
+            {
+              "exerciseId": "hollow-hold",
+              "prescription": {
+                "p1": "30 s",
+                "p2": "30 s",
+                "p3": "30 s",
+                "p4": "30 s"
+              }
+            },
+            {
+              "exerciseId": "bird-dog",
+              "prescription": {
+                "p1": "10 / côté",
+                "p2": "10 / côté",
+                "p3": "10 / côté",
+                "p4": "10 / côté"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "HA",
+      "kind": "home",
+      "homeOf": "A",
+      "name": "Maison A : Jambes",
+      "duration": "30 à 40 min",
+      "intro": "Circuit en poids du corps. Matériel : une chaise ou un lit, une serviette, un élastique si tu en as un. Repos 1 min entre les tours. Phase 1 : 3 tours. Phase 2 : 4 tours, plus lent. Phase 3 : 4 tours, avec sauts et tempo explosif.",
+      "blocks": [
+        {
+          "title": "Circuit jambes",
+          "rounds": {
+            "p1": 3,
+            "p2": 4,
+            "p3": 4,
+            "p4": 3
+          },
+          "items": [
+            {
+              "exerciseId": "tempo-squat",
+              "prescription": {
+                "p1": "x 20",
+                "p2": "x 20",
+                "p3": "x 20",
+                "p4": "x 20"
+              },
+              "note": "3 s de descente, 1 s de pause"
+            },
+            {
+              "exerciseId": "bulgarian-split-squat",
+              "prescription": {
+                "p1": "x 12 / jambe",
+                "p2": "x 12 / jambe",
+                "p3": "x 12 / jambe",
+                "p4": "x 12 / jambe"
+              },
+              "note": "Pied arrière sur une chaise"
+            },
+            {
+              "exerciseId": "step-down",
+              "prescription": {
+                "p1": "x 10 / jambe",
+                "p2": "x 10 / jambe",
+                "p3": "x 10 / jambe",
+                "p4": "x 10 / jambe"
+              },
+              "note": "Lent, sur une marche"
+            },
+            {
+              "exerciseId": "single-leg-rdl",
+              "prescription": {
+                "p1": "x 12 / jambe",
+                "p2": "x 12 / jambe",
+                "p3": "x 12 / jambe",
+                "p4": "x 12 / jambe"
+              }
+            },
+            {
+              "exerciseId": "wall-sit",
+              "prescription": {
+                "p1": "x 60 s",
+                "p2": "x 60 s",
+                "p3": "x 60 s",
+                "p4": "x 60 s"
+              }
+            },
+            {
+              "exerciseId": "skater-jump",
+              "prescription": {
+                "p1": "x 20",
+                "p2": "x 20",
+                "p3": "x 20",
+                "p4": "x 20"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "HB",
+      "kind": "home",
+      "homeOf": "B",
+      "name": "Maison B : Haut du corps",
+      "duration": "30 à 40 min",
+      "intro": "Circuit en poids du corps. Matériel : une chaise ou un lit, une serviette, un élastique si tu en as un. Repos 1 min entre les tours. Phase 1 : 3 tours. Phase 2 : 4 tours, plus lent. Phase 3 : 4 tours, avec sauts et tempo explosif.",
+      "blocks": [
+        {
+          "title": "Circuit haut du corps",
+          "rounds": {
+            "p1": 3,
+            "p2": 4,
+            "p3": 4,
+            "p4": 3
+          },
+          "items": [
+            {
+              "exerciseId": "push-up",
+              "prescription": {
+                "p1": "x max moins 2",
+                "p2": "x max moins 2",
+                "p3": "x max moins 2",
+                "p4": "x max moins 2"
+              },
+              "note": "Variantes : mains serrées, pieds surélevés"
+            },
+            {
+              "exerciseId": "inverted-row",
+              "prescription": {
+                "p1": "x 12",
+                "p2": "x 12",
+                "p3": "x 12",
+                "p4": "x 12"
+              },
+              "note": "Sous une table solide, ou élastique / serviette coincée dans une porte"
+            },
+            {
+              "exerciseId": "pike-push-up",
+              "prescription": {
+                "p1": "x 10",
+                "p2": "x 10",
+                "p3": "x 10",
+                "p4": "x 10"
+              }
+            },
+            {
+              "exerciseId": "ytw-raise",
+              "prescription": {
+                "p1": "x 10 chaque",
+                "p2": "x 10 chaque",
+                "p3": "x 10 chaque",
+                "p4": "x 10 chaque"
+              }
+            },
+            {
+              "exerciseId": "towel-grip",
+              "prescription": {
+                "p1": "3 x 45 s",
+                "p2": "3 x 45 s",
+                "p3": "3 x 45 s",
+                "p4": "3 x 45 s"
+              },
+              "note": "Serrer et essorer une serviette roulée (suspension si tu trouves une barre)"
+            },
+            {
+              "exerciseId": "neck-isometric",
+              "prescription": {
+                "p1": "4 directions x 20 s",
+                "p2": "4 directions x 20 s",
+                "p3": "4 directions x 20 s",
+                "p4": "4 directions x 20 s"
+              }
+            },
+            {
+              "exerciseId": "plank",
+              "prescription": {
+                "p1": "45 s",
+                "p2": "45 s",
+                "p3": "45 s",
+                "p4": "45 s"
+              }
+            },
+            {
+              "exerciseId": "side-plank",
+              "prescription": {
+                "p1": "30 s / côté",
+                "p2": "30 s / côté",
+                "p3": "30 s / côté",
+                "p4": "30 s / côté"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "HC",
+      "kind": "home",
+      "homeOf": "C",
+      "name": "Maison C : Conditioning",
+      "duration": "30 à 40 min",
+      "intro": "EMOM de 20 min puis 5 min de gainage. Aucun matériel. À l'hôtel, 10 à 15 min de montées d'escaliers peuvent remplacer l'EMOM.",
+      "blocks": [
+        {
+          "title": "EMOM 20 min",
+          "note": "Une tâche au début de chaque minute, repos le reste de la minute, 5 tours de 4 minutes. Pas de nombre de tours variable par phase.",
+          "items": [
+            {
+              "exerciseId": "squat-jump",
+              "prescription": {
+                "p1": "minute 1 : 12 reps",
+                "p2": "minute 1 : 12 reps",
+                "p3": "minute 1 : 12 reps",
+                "p4": "minute 1 : 12 reps"
+              }
+            },
+            {
+              "exerciseId": "burpee",
+              "prescription": {
+                "p1": "minute 2 : 10 reps",
+                "p2": "minute 2 : 10 reps",
+                "p3": "minute 2 : 10 reps",
+                "p4": "minute 2 : 10 reps"
+              }
+            },
+            {
+              "exerciseId": "mountain-climber",
+              "prescription": {
+                "p1": "minute 3 : 20 reps",
+                "p2": "minute 3 : 20 reps",
+                "p3": "minute 3 : 20 reps",
+                "p4": "minute 3 : 20 reps"
+              }
+            },
+            {
+              "exerciseId": "moto-position-hold",
+              "prescription": {
+                "p1": "minute 4 : 45 s",
+                "p2": "minute 4 : 45 s",
+                "p3": "minute 4 : 45 s",
+                "p4": "minute 4 : 45 s"
+              }
+            }
+          ]
+        },
+        {
+          "title": "Gainage (5 min)",
+          "items": [
+            {
+              "exerciseId": "hollow-hold",
+              "prescription": {
+                "p1": "1 série",
+                "p2": "1 série",
+                "p3": "1 série",
+                "p4": "1 série"
+              }
+            },
+            {
+              "exerciseId": "plank",
+              "prescription": {
+                "p1": "1 série",
+                "p2": "1 série",
+                "p3": "1 série",
+                "p4": "1 série"
+              }
+            },
+            {
+              "exerciseId": "superman",
+              "prescription": {
+                "p1": "1 série",
+                "p2": "1 série",
+                "p3": "1 série",
+                "p4": "1 série"
+              }
+            }
+          ]
+        },
+        {
+          "title": "À l'hôtel",
+          "note": "Remplacement possible de l'EMOM.",
+          "items": [
+            {
+              "exerciseId": "stair-climb",
+              "prescription": {
+                "p1": "10 à 15 min",
+                "p2": "10 à 15 min",
+                "p3": "10 à 15 min",
+                "p4": "10 à 15 min"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "id": "wall-sit",
+      "name": "Chaise contre le mur",
+      "unit": "s",
+      "better": "higher",
+      "exerciseId": "wall-sit"
+    },
+    {
+      "id": "dead-hang",
+      "name": "Suspension à la barre",
+      "unit": "s",
+      "better": "higher",
+      "exerciseId": "dead-hang"
+    },
+    {
+      "id": "plank",
+      "name": "Planche",
+      "unit": "s",
+      "better": "higher",
+      "exerciseId": "plank"
+    },
+    {
+      "id": "row-2000",
+      "name": "Rameur 2000 m",
+      "unit": "s",
+      "better": "lower",
+      "exerciseId": "rowing-machine"
+    },
+    {
+      "id": "squat-5rm",
+      "name": "Squat, 5 reps max",
+      "unit": "kg",
+      "better": "higher",
+      "exerciseId": "back-squat"
+    },
+    {
+      "id": "pull-up-max",
+      "name": "Tractions, reps max",
+      "unit": "reps",
+      "better": "higher",
+      "exerciseId": "pull-up"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "RPE",
+      "text": "Rate of Perceived Exertion : effort ressenti noté sur 10. RPE 7 = 3 reps en réserve, RPE 8 = 2, RPE 10 = échec."
+    },
+    {
+      "term": "S1, S2...",
+      "text": "Semaine 1, semaine 2... du programme (S1 = 12 au 18 octobre)."
+    },
+    {
+      "term": "3 x 10",
+      "text": "3 séries de 10 répétitions. \"/ jambe\" ou \"/ côté\" : à faire de chaque côté."
+    },
+    {
+      "term": "Reps",
+      "text": "Répétitions."
+    },
+    {
+      "term": "Max",
+      "text": "Autant de reps (ou de secondes) que possible avec une technique propre."
+    },
+    {
+      "term": "Lesté",
+      "text": "Avec une charge en plus (haltères, gilet, disque)."
+    },
+    {
+      "term": "Tempo 3-1-1",
+      "text": "3 s de descente, 1 s de pause en bas, 1 s de montée."
+    },
+    {
+      "term": "Excentrique",
+      "text": "Phase où le muscle freine en s'allongeant (la descente). C'est ce que font les cuisses à ski."
+    },
+    {
+      "term": "Isométrie",
+      "text": "Tenir une position sans bouger (chaise, planche, position moto)."
+    },
+    {
+      "term": "Pliométrie",
+      "text": "Sauts et rebonds explosifs pour développer la puissance."
+    },
+    {
+      "term": "Zone 2",
+      "text": "Cardio facile et long, à une allure où tu peux tenir une conversation. Construit l'endurance de base."
+    },
+    {
+      "term": "EMOM",
+      "text": "Every Minute On the Minute : au début de chaque minute, tu fais la tâche, tu récupères le reste de la minute."
+    },
+    {
+      "term": "Arm pump",
+      "text": "Avant-bras durs et tétanisés à moto, on ne sent plus les leviers. Se prévient par le grip et la détente sur la moto."
+    },
+    {
+      "term": "Grip",
+      "text": "Force de préhension (mains et avant-bras)."
+    },
+    {
+      "term": "Goblet squat",
+      "text": "Squat avec un haltère ou un kettlebell tenu contre la poitrine."
+    },
+    {
+      "term": "Soulevé de terre roumain",
+      "text": "Barre ou haltères descendus le long des jambes, jambes presque tendues, dos plat. Travaille les ischios."
+    },
+    {
+      "term": "Fentes bulgares",
+      "text": "Fente sur une jambe, pied arrière posé sur un banc."
+    },
+    {
+      "term": "Step-down",
+      "text": "Debout sur une box, descendre lentement un pied vers le sol sur une jambe, puis remonter."
+    },
+    {
+      "term": "Nordic curl",
+      "text": "À genoux, chevilles bloquées, se laisser tomber vers l'avant le plus lentement possible. Ischios."
+    },
+    {
+      "term": "Skater (sauts latéraux)",
+      "text": "Sauts d'une jambe sur l'autre, de côté, comme un patineur."
+    },
+    {
+      "term": "Copenhagen plank",
+      "text": "Planche latérale avec la jambe du dessus posée sur un banc. Adducteurs."
+    },
+    {
+      "term": "Dead hang",
+      "text": "Suspension bras tendus à une barre de traction."
+    },
+    {
+      "term": "Farmer carry",
+      "text": "Marcher en portant un haltère lourd dans chaque main."
+    },
+    {
+      "term": "Wrist roller",
+      "text": "Barre avec une corde et un poids : enrouler puis dérouler en tournant les poignets."
+    },
+    {
+      "term": "Pallof press",
+      "text": "Élastique ou poulie sur le côté, pousser les bras devant soi sans laisser le buste tourner."
+    },
+    {
+      "term": "Hip thrust",
+      "text": "Dos sur un banc, barre sur les hanches, monter le bassin. Fessiers."
+    },
+    {
+      "term": "Kettlebell swing",
+      "text": "Balancer un kettlebell jusqu'à hauteur d'épaules par une poussée de hanches."
+    },
+    {
+      "term": "Box jump",
+      "text": "Saut à pieds joints sur une box, redescendre en marchant."
+    },
+    {
+      "term": "Hollow hold",
+      "text": "Allongé sur le dos, bras et jambes tendus décollés du sol, bas du dos plaqué."
+    },
+    {
+      "term": "Bird dog",
+      "text": "À quatre pattes, tendre bras et jambe opposés, sans bouger le bassin."
+    },
+    {
+      "term": "Pike push-up",
+      "text": "Pompe en V inversé, fesses en l'air, pour les épaules."
+    },
+    {
+      "term": "Y-T-W",
+      "text": "Allongé sur le ventre, lever les bras en forme de Y, T puis W. Haut du dos."
+    },
+    {
+      "term": "Burpee",
+      "text": "Squat, planche, pompe, retour debout, saut."
+    },
+    {
+      "term": "Mountain climber",
+      "text": "En planche, ramener les genoux vers la poitrine en alternance, vite."
+    },
+    {
+      "term": "Bike fit",
+      "text": "Étude posturale pour régler le vélo à ta morphologie."
+    }
+  ],
+  "muscleGroups": [
+    {
+      "id": "quadriceps",
+      "name": "Quadriceps"
+    },
+    {
+      "id": "ischios",
+      "name": "Ischio-jambiers"
+    },
+    {
+      "id": "fessiers",
+      "name": "Fessiers"
+    },
+    {
+      "id": "adducteurs",
+      "name": "Adducteurs"
+    },
+    {
+      "id": "dos",
+      "name": "Dos"
+    },
+    {
+      "id": "pectoraux",
+      "name": "Pectoraux"
+    },
+    {
+      "id": "epaules",
+      "name": "Épaules"
+    },
+    {
+      "id": "bras-grip",
+      "name": "Bras et avant-bras (grip)"
+    },
+    {
+      "id": "nuque",
+      "name": "Nuque"
+    },
+    {
+      "id": "gainage",
+      "name": "Gainage"
+    },
+    {
+      "id": "cardio",
+      "name": "Cardio"
+    },
+    {
+      "id": "pliometrie",
+      "name": "Pliométrie"
+    }
+  ]
+}
