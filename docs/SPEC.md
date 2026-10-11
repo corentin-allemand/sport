@@ -231,3 +231,22 @@ L'app devient une PWA installable sur iPhone qui tourne entièrement sur l'appar
 ## iOS
 
 Manifest (`short_name` « Sport », `display: standalone`, `start_url` et `scope` « ./ », couleurs sombres, icônes PNG 180, 192, 512 et maskable 512), `apple-touch-icon` 180, `apple-mobile-web-app-capable`, `apple-mobile-web-app-status-bar-style: black-translucent`, `apple-mobile-web-app-title`.
+
+---
+
+# V4 : en séance, cases à cocher et minuteur
+
+## Données
+
+- `program.restDefaults` (graine, `programVersion` 2) : repos par défaut en secondes par phase, `{ "p1": 75, "p2": 120, "p3": 90, "p4": 75 }`. Éditable dans Configuration, Programme. Validation : entier de 5 à 900. Mise à jour d'une config locale modifiée : les clés absentes sont copiées depuis la graine.
+- `progress` (donnée utilisateur, à la racine de la db, comme `logs`) : `{ "<semaine>/<sessionId>/<gym|home>": { "<blocIndex>/<itemIndex>": [true, false, ...] } }`. Pour un bloc à `rounds`, la position est `"<blocIndex>/r"` (une case par tour). Index = position d'origine dans la séance (un swap ne change rien). Jamais touché par une mise à jour du programme, inclus dans l'export, optionnel à l'import (validé s'il est présent).
+- `preferences.autoRest` (booléen, absent = activé) : lancer le repos en cochant une série.
+- Minuteur : état dans `localStorage` (`sport.timer.v1`), horodatages uniquement.
+
+## Règles
+
+- Nombre de cases d'un item : prescription qui commence par `N x` (plus les `+ M x` suivants), ou `N séries` ; sinon 1 case. Maximum 12. Items d'un bloc à tours : pas de case, les tours portent la progression.
+- Cocher une case (série, tour ou case unique) lance le repos de la phase de la semaine consultée, si `autoRest` est actif. Décocher ne lance rien.
+- Fin du repos : bip WebAudio à deux tons (AudioContext débloqué au premier geste), `navigator.vibrate` s'il existe, pastille « Go » avec flash. Fin détectée au retour de l'arrière-plan ou au rechargement : « Go » sans son.
+- Screen Wake Lock demandé tant qu'un repos ou un chrono tourne, relâché à l'arrêt, redemandé au retour de visibilité, ignoré si non supporté.
+- `prefers-reduced-motion` respecté ; annonces `aria-live` polies aux paliers (lancement, 30 s, 10 s, fin, pause, tours).

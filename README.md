@@ -18,11 +18,23 @@ Sur le téléphone, dans le stockage du navigateur (IndexedDB) : séances faites
 
 Conséquence : supprimer l'app de l'écran d'accueil ou effacer les données de Safari efface aussi le journal. D'où la sauvegarde.
 
+## En séance
+
+- **Cocher au fil de l'eau** : sous chaque exercice, une pastille par série (« 3 x 10 » donne 3 pastilles, « 2 x 90 s + 1 x max » en donne 3). Prescription libre (« 45 s », « 1 min ») : une seule case « Fait ». Circuits maison à tours : une pastille par tour, au niveau du bloc. Un tap coche, un second tap décoche. Le reste de la ligne ouvre toujours la fiche exercice, le bouton switch reste à droite.
+- **Progression** en haut de la séance (« 7 / 18 séries » et une jauge). Tout coché : le bouton « Marquer comme faite » est mis en avant. « Réinitialiser les cases » remet la séance à zéro (avec confirmation).
+- Les cases sont propres à la semaine, à la séance et au lieu (salle ou maison). Elles restent attachées à la position de l'exercice : un remplacement (switch) les conserve. Elles font partie de la sauvegarde exportée.
+- **Minuteur** : pastille flottante au-dessus de la barre d'onglets (sur la séance, et partout tant qu'un minuteur tourne). Tap pour ouvrir :
+  - **Repos** : 30 s, 45 s, 1 min, 1 min 30, 2 min, 3 min, puis -15 s / +15 s, pause, reprise, arrêt.
+  - **Chrono** : départ, pause, tours, remise à zéro (chaise, planche, suspension).
+- **Repos automatique** : cocher une série lance le repos de la phase (Fondation 1 min 15, Force 2 min, Puissance 1 min 30, Tests 1 min 15). Durées et interrupteur dans Configuration, Programme, « Minuteur de repos ».
+- **Fin du repos** : bip doux, vibration (Android seulement), la pastille clignote et affiche « Go ». Le son se débloque au premier tap dans l'app (règle iOS) et suit le bouton silencieux de l'iPhone.
+- L'écran reste allumé tant qu'un minuteur ou le chrono tourne. Le temps est calculé à partir de l'heure : verrouiller le téléphone, changer d'app ou recharger ne fausse rien, et un repos fini entre-temps affiche « Go » au retour (sans son : iOS suspend l'app en arrière-plan).
+
 ## Sauvegarde
 
 Configuration (icône réglages), onglet **Données** :
 
-- **Exporter mes données** : télécharge `sport-backup-AAAA-MM-JJ.json` (programme, journal, préférences). Le ranger dans iCloud Drive ou Fichiers.
+- **Exporter mes données** : télécharge `sport-backup-AAAA-MM-JJ.json` (programme, journal, préférences, cases cochées). Le ranger dans iCloud Drive ou Fichiers.
 - **Importer une sauvegarde** : choisir un fichier exporté, confirmer. Remplace toutes les données du téléphone.
 - La date du dernier export est affichée. Un rappel discret apparaît sur Aujourd'hui après 30 jours sans export.
 
@@ -57,6 +69,7 @@ node server.js
 ```
 public/index.html, styles.css, app.js, js/*.js   app (ES modules, sans build)
 public/js/store.js        données locales (IndexedDB, repli localStorage)
+public/js/timer.js        minuteur de repos et chrono (pastille, feuille)
 public/sw.js              service worker (hors ligne, mises à jour)
 public/precache.json      généré par scripts/build-precache.mjs
 public/data/program.json  programme de base (graine)

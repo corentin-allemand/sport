@@ -204,15 +204,61 @@ export function roundsFor(block, phaseId) {
   return null;
 }
 
+// index : position d'origine du bloc et de l'item dans la séance (clé de progression).
 export function visibleBlocks(session, phaseId) {
   return (session?.blocks || [])
-    .map((b) => {
+    .map((b, bi) => {
       const items = (b.items || [])
-        .map((it) => ({ ...it, rx: prescriptionFor(it, phaseId) }))
+        .map((it, ii) => ({ ...it, index: ii, rx: prescriptionFor(it, phaseId) }))
         .filter((it) => it.rx !== '');
-      return { ...b, items, roundsCount: roundsFor(b, phaseId) };
+      return { ...b, index: bi, items, roundsCount: roundsFor(b, phaseId) };
     })
     .filter((b) => b.items.length > 0);
+}
+
+// Séries à cocher (V4)
+
+// Nombre de pastilles d'une prescription : "3 x 10" -> 3, "2 x 90 s + 1 x max" -> 3,
+// "3 séries" -> 3, prescription libre ("1 min", "45 s", "x 20") -> 1 case.
+export function setCount(rx) {
+  const s = String(rx ?? '').trim();
+  const m = s.match(/^(\d{1,2})\s*[x×]\s*\S/i);
+  let n = 1;
+  if (m) {
+    n = Number(m[1]);
+    for (const t of s.slice(m[0].length - 1).matchAll(/\+\s*(\d{1,2})\s*[x×]\s/gi)) n += Number(t[1]);
+  } else {
+    const m2 = s.match(/^(\d{1,2})\s+séries?(\s|$)/i);
+    if (m2) n = Number(m2[1]);
+  }
+  return Math.min(Math.max(n, 1), 12);
+}
+
+export const progressKey = (week, sessionId, variant) => `${week}/${sessionId}/${variant === 'home' ? 'home' : 'gym'}`;
+
+// Cases cochées d'une position, ramenées à n valeurs booléennes.
+export function progressMarks(db, key, pos, n) {
+  const arr = db?.progress?.[key]?.[pos];
+  return Array.from({ length: n }, (_, i) => Array.isArray(arr) && arr[i] === true);
+}
+
+// Repos par défaut d'une phase, en secondes (program.restDefaults, sinon valeurs d'origine).
+export const REST_FALLBACK = { p1: 75, p2: 120, p3: 90, p4: 75 };
+export function restFor(db, phaseId) {
+  const v = Number(db?.program?.restDefaults?.[phaseId]);
+  if (Number.isInteger(v) && v > 0) return v;
+  return REST_FALLBACK[phaseId] || 90;
+}
+
+export const autoRestOn = (db) => db?.preferences?.autoRest !== false;
+
+// 75 -> "1 min 15", 120 -> "2 min", 45 -> "45 s"
+export function formatRest(sec) {
+  const s = Math.max(0, Math.round(Number(sec) || 0));
+  const m = Math.floor(s / 60);
+  const r = s % 60;
+  if (!m) return `${r} s`;
+  return r ? `${m} min ${pad(r)}` : `${m} min`;
 }
 
 // Statistiques

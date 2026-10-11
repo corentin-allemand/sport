@@ -1,7 +1,7 @@
 // Service worker : l'app fonctionne hors ligne.
 // VERSION est réécrite par scripts/build-precache.mjs (hash du contenu de public/) :
 // un nouveau hash change ce fichier, donc le navigateur installe la nouvelle version.
-const VERSION = '838ee4171b1f';
+const VERSION = '215eb39d9efb';
 const PREFIX = 'sport-';
 const CACHE = `${PREFIX}${VERSION}`;
 const FONTS_CACHE = `${PREFIX}fonts`;

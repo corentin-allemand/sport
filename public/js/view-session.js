@@ -10,7 +10,19 @@ export function resolveVariant(db, week, id, variants) {
   return v;
 }
 
-function blockHtml(db, sessionId, b) {
+// Pastilles à cocher (V4). pos = "<bloc>/<item>" ou "<bloc>/r" (tours du bloc).
+function marksHtml(db, pkey, pos, n, { label, unit = 'Série', single = false }) {
+  const marks = L.progressMarks(db, pkey, pos, n);
+  const btns = marks.map((on, i) => {
+    const aria = single ? `${label} : fait` : `${unit} ${i + 1} sur ${n}, ${label}`;
+    return `<button type="button" class="set ${single ? 'set-single' : ''} ${on ? 'is-on' : ''}" data-action="set" data-pkey="${esc(pkey)}" data-pos="${esc(pos)}" data-i="${i}" data-label="${esc(single ? label : `${label}, ${unit.toLowerCase()} ${i + 1}/${n}`)}" aria-pressed="${on}" aria-label="${esc(aria)}">
+      <span class="set-dot">${single ? `${icon('check')}<span class="set-word">Fait</span>` : `<span class="set-n">${i + 1}</span>`}</span>
+    </button>`;
+  }).join('');
+  return `<div class="sets" role="group" aria-label="${esc(single ? label : `${unit}s : ${label}`)}">${btns}</div>`;
+}
+
+function blockHtml(db, sessionId, b, pkey) {
   const rounds = b.roundsCount;
   return `
     <section class="block">
@@ -19,6 +31,7 @@ function blockHtml(db, sessionId, b) {
         ${rounds ? `<span class="rounds">${icon('repeat')}${rounds} tours</span>` : ''}
       </div>
       ${b.note ? `<p class="block-note">${esc(b.note)}</p>` : ''}
+      ${rounds ? `<div class="rounds-track glass"><span class="rounds-label">Tours</span>${marksHtml(db, pkey, `${b.index}/r`, Math.min(rounds, 12), { label: b.title || 'Circuit', unit: 'Tour' })}</div>` : ''}
       <div class="ex-list glass">
         ${b.items.map((it) => {
           const origin = L.exerciseById(db, it.exerciseId);
@@ -40,7 +53,11 @@ function blockHtml(db, sessionId, b) {
           const btn = canSwap
             ? `<button class="swap-btn ${swapId ? 'is-on' : ''}" type="button" data-action="swap" data-session="${esc(sessionId)}" data-ex="${esc(origin.id)}" aria-label="Changer d'exercice : ${esc(name)}">${icon('swap')}</button>`
             : '';
-          return `<div class="ex-row ${canSwap ? 'has-swap' : ''}">${main}${btn}</div>`;
+          const sets = rounds ? '' : (() => {
+            const n = L.setCount(it.rx);
+            return marksHtml(db, pkey, `${b.index}/${it.index}`, n, { label: name, single: n === 1 });
+          })();
+          return `<div class="ex-item"><div class="ex-row ${canSwap ? 'has-swap' : ''}">${main}${btn}</div>${sets}</div>`;
         }).join('')}
       </div>
     </section>`;
@@ -66,6 +83,20 @@ export function viewSession({ db, today, variants }, params) {
   const variant = resolveVariant(db, week, id, variants);
   const session = variant === 'home' && home ? home : base;
   const blocks = L.visibleBlocks(session, phaseId);
+  const pkey = L.progressKey(week, id, variant);
+  const rest = L.restFor(db, phaseId);
+  const progress = blocks.length ? `
+    <section class="prog glass" id="sess-progress" aria-label="Progression de la séance">
+      <div class="prog-head">
+        <span class="prog-count" aria-live="polite"><strong class="prog-done">0</strong> / <span class="prog-total">0</span> séries</span>
+        <span class="prog-state">Coche au fil de l'eau</span>
+      </div>
+      <div class="prog-bar" aria-hidden="true"><span class="prog-fill"></span></div>
+      <div class="prog-foot">
+        <span class="prog-rest">${icon('clock')}${L.autoRestOn(db) ? `Repos auto ${esc(L.formatRest(rest))}` : 'Repos auto désactivé'}</span>
+        <button type="button" class="prog-reset" data-action="reset-sets" data-pkey="${esc(pkey)}" hidden>Réinitialiser les cases</button>
+      </div>
+    </section>` : '';
 
   const seg = home ? `
     <div class="segmented glass" role="tablist" aria-label="Lieu">
@@ -94,7 +125,7 @@ export function viewSession({ db, today, variants }, params) {
   } else {
     actions = `
       <div class="actions">
-        <button class="btn btn-primary btn-block btn-lg" data-action="open-done" data-week="${week}" data-id="${esc(id)}">${icon('check')}Marquer comme faite</button>
+        <button class="btn btn-primary btn-block btn-lg done-btn" data-action="open-done" data-week="${week}" data-id="${esc(id)}">${icon('check')}Marquer comme faite</button>
         <button class="btn btn-ghost btn-block" data-action="skip" data-week="${week}" data-id="${esc(id)}">Sauter cette séance</button>
       </div>`;
   }
@@ -114,8 +145,30 @@ export function viewSession({ db, today, variants }, params) {
         </p>
       </header>
       ${seg}
+      ${progress}
       ${session.intro ? `<p class="intro">${esc(session.intro)}</p>` : ''}
-      <div class="blocks">${blocks.map((b) => blockHtml(db, session.id, b)).join('') || '<p class="muted">Rien de prévu pour cette phase.</p>'}</div>
+      <div class="blocks">${blocks.map((b) => blockHtml(db, session.id, b, pkey)).join('') || '<p class="muted">Rien de prévu pour cette phase.</p>'}</div>
       ${actions}`,
+    mount(root) {
+      syncProgressUi(root);
+    },
+    restSeconds: rest,
   };
+}
+
+// Compteur, jauge, bouton de fin mis en avant : calculés depuis les pastilles affichées.
+export function syncProgressUi(root) {
+  const card = root.querySelector('#sess-progress');
+  if (!card) return;
+  const all = root.querySelectorAll('.set');
+  const done = root.querySelectorAll('.set.is-on').length;
+  const total = all.length;
+  const complete = total > 0 && done === total;
+  card.querySelector('.prog-done').textContent = String(done);
+  card.querySelector('.prog-total').textContent = String(total);
+  card.querySelector('.prog-fill').style.width = `${total ? Math.round((done / total) * 100) : 0}%`;
+  card.querySelector('.prog-state').textContent = complete ? 'Tout est fait' : done ? `${total - done} restante${total - done > 1 ? 's' : ''}` : 'Coche au fil de l\'eau';
+  card.classList.toggle('is-complete', complete);
+  card.querySelector('.prog-reset').hidden = done === 0;
+  root.querySelector('.done-btn')?.classList.toggle('is-ready', complete);
 }

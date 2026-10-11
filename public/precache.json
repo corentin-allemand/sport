@@ -1,5 +1,5 @@
 {
-  "version": "838ee4171b1f",
+  "version": "215eb39d9efb",
   "files": [
     "app.js",
     "apple-touch-icon.png",
@@ -15,6 +15,7 @@
     "js/picker.js",
     "js/store.js",
     "js/sw-client.js",
+    "js/timer.js",
     "js/ui.js",
     "js/view-config.js",
     "js/view-exercise.js",
